@@ -18,7 +18,7 @@ set_pointers:                   # priprema pokazivace za rad
 	movl $strimg, %esi
 je_li_slovo:                      #----rad sa slovima i punjenje pomocnog stringa-------#
     cmpb $0, strimg(,%ecx,1)
-    je provjera
+    je pripremi_pomocni
     cmpb $'A' , strimg(,%ecx,1)        
     jb nije_slovo
     cmpb $'Z' , strimg(,%ecx,1)
@@ -55,7 +55,7 @@ set_pointers_p:
 provjera: 
     movb (%esi), %al
 	movb (%edi), %bl
-	cmpb %bl, (%edi)
+	cmpb %bl, %al
 	je update
 	jmp igreska
 update:
